@@ -1,16 +1,12 @@
 <form id="form">
-  <input type="text" name="resource_url">
-  <button id='mylink' type="button">click</button>
+  resource_url:
+  <input type="text" name="resource_url" style="width: 80em;">
+  <br>
+  <br>
+  <button id='download_button' type="button">download resource</button>
 </form>
 
 <script type="text/javascript">
-
-function downloadResource(resourceUrl) {
-	var script = document.createElement("script");
-  script.type = "text/javascript";
-  script.src = resourceUrl;
-  document.getElementsByTagName("head")[0].appendChild(script);
-}
 
 window.onload = function() {
   var resourceUrl = sessionStorage.getItem("resource_url");
@@ -21,14 +17,19 @@ window.onload = function() {
   }
 }
 
-var myLink = document.getElementById('mylink');
+var myLink = document.getElementById('download_button');
 
 myLink.onclick = function(){
   sessionStorage.setItem("resource_url", form.resource_url.value);
   document.location.reload();
   return false;
+}
 
+function downloadResource(resourceUrl) {
+	var script = document.createElement("script");
+  script.type = "text/javascript";
+  script.src = resourceUrl;
+  document.getElementsByTagName("head")[0].appendChild(script);
 }
 
 </script>
-<!-- https://yandex.by/ads/system/context.js -->
